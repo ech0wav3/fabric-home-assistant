@@ -234,7 +234,7 @@ def setup_mosquitto():
         sudo("curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key")
         sudo("apt-key add mosquitto-repo.gpg.key")
         with cd("/etc/apt/sources.list.d/"):
-            sudo("curl -O http://repo.mosquitto.org/debian/mosquitto-jessie.list")
+            sudo("curl -O http://repo.mosquitto.org/debian/mosquitto-stretch.list")
             sudo("apt-get update")
             sudo("apt-cache search mosquitto")
             sudo("apt-get install -y mosquitto mosquitto-clients")
@@ -264,7 +264,7 @@ def setup_openzwave():
 
 def setup_libcec():
     setup_libcec_novenv()
-    sudo("ln -s /usr/local/lib/python3.4/dist-packages/cec /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages", user="homeassistant")
+    sudo("ln -s /usr/local/lib/python3.5/dist-packages/cec /srv/homeassistant/homeassistant_venv/lib/python3.5/site-packages", user="homeassistant")
 
 def setup_libmicrohttpd():
     """ Build and install libmicrohttpd """
@@ -286,9 +286,9 @@ def setup_openzwave_controlpanel():
             put("Makefile", "Makefile", use_sudo=True)
             sudo("make")
             if pi_hardware == "armv7l":
-                sudo("ln -sd /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.3-py3.4-linux-armv7l.egg/config")
+                sudo("ln -sd /srv/homeassistant/homeassistant_venv/lib/python3.5/site-packages/libopenzwave-0.3.3-py3.5-linux-armv7l.egg/config")
             else:
-                sudo("ln -sd /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.3-py3.4-linux-armv**6**l.egg/config")
+                sudo("ln -sd /srv/homeassistant/homeassistant_venv/lib/python3.5/site-packages/libopenzwave-0.3.3-py3.5-linux-armv**6**l.egg/config")
         sudo("chown -R homeassistant:homeassistant /srv/homeassistant/src/open-zwave-control-panel")
 
 def setup_services():
