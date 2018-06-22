@@ -203,7 +203,7 @@ mqtt:
     with settings(sudo_user='homeassistant'):
         sudo("/srv/homeassistant/homeassistant_venv/bin/hass --script ensure_config --config /home/homeassistant/.homeassistant")
 
-    fabric.contrib.files.append("/home/homeassistant/.homeassistant/configuration.yaml", hacfg, use_sudo=True)
+    #fabric.contrib.files.append("/home/homeassistant/.homeassistant/configuration.yaml", hacfg, use_sudo=True)
     sudo("systemctl enable home-assistant_novenv.service")
     sudo("systemctl daemon-reload")
 
@@ -309,7 +309,7 @@ mqtt:
 """
 
 
-    fabric.contrib.files.append("/home/homeassistant/.homeassistant/configuration.yaml", hacfg, use_sudo=True)
+    #fabric.contrib.files.append("/home/homeassistant/.homeassistant/configuration.yaml", hacfg, use_sudo=True)
     sudo("systemctl enable home-assistant.service")
     sudo("systemctl daemon-reload")
     sudo("systemctl start home-assistant.service")
@@ -343,7 +343,7 @@ def deploy():
     create_venv()
 
     ## Build and Install Mosquitto ##
-    setup_mosquitto()
+    #setup_mosquitto()
 
     ## Activate venv, install Home-Assistant ##
     setup_homeassistant()
@@ -387,7 +387,7 @@ def deploy_novenv():
     install_syscore()
 
     ## Build and Install Mosquitto ##
-    setup_mosquitto()
+    #setup_mosquitto()
 
     ## Activate venv, install Home-Assistant ##
     setup_homeassistant_novenv()

@@ -22,6 +22,20 @@ while getopts ":n" opt; do
       sudo apt-get --force-yes --yes install zip
     fi
 	
+	PKG_NETTOOLS=$(dpkg-query -W --showformat='${Status}\n' net-tools|grep "install ok installed")
+    echo Checking for net-tools: $PKG_NETTOOLS
+    if [ "" == "$PKG_NETTOOLS" ]; then
+      echo "No net-tools. Setting up net-tools."
+      sudo apt-get --force-yes --yes install net-tools
+    fi
+	
+	PKG_NMAP=$(dpkg-query -W --showformat='${Status}\n' nmap|grep "install ok installed")
+    echo Checking for nmap: $PKG_NMAP
+    if [ "" == "$PKG_NMAP" ]; then
+      echo "No nmap. Setting up nmap."
+      sudo apt-get --force-yes --yes install nmap
+    fi
+	
     PKG_PYDEV=$(dpkg-query -W --showformat='${Status}\n' python-dev|grep "install ok installed")
     echo Checking for python-dev: $PKG_PYDEV
     if [ "" == "$PKG_PYDEV" ]; then
@@ -90,10 +104,24 @@ me=$(whoami)
 sudo apt-get update
 
 PKG_ZIP=$(dpkg-query -W --showformat='${Status}\n' zip|grep "install ok installed")
-echo Checking for zip: $PKG_PYDEV
+echo Checking for zip: $PKG_ZIP
 if [ "" == "$PKG_ZIP" ]; then
   echo "No zip. Setting up zip."
   sudo apt-get --force-yes --yes install zip
+fi
+
+PKG_NETTOOLS=$(dpkg-query -W --showformat='${Status}\n' net-tools|grep "install ok installed")
+echo Checking for net-tools: $PKG_NETTOOLS
+if [ "" == "$PKG_NETTOOLS" ]; then
+  echo "No net-tools. Setting up net-tools."
+  sudo apt-get --force-yes --yes install net-tools
+fi
+
+PKG_NMAP=$(dpkg-query -W --showformat='${Status}\n' nmap|grep "install ok installed")
+echo Checking for nmap: $PKG_NMAP
+if [ "" == "$PKG_NMAP" ]; then
+  echo "No nmap. Setting up nmap."
+  sudo apt-get --force-yes --yes install nmap
 fi
 
 PKG_PYDEV=$(dpkg-query -W --showformat='${Status}\n' python-dev|grep "install ok installed")
