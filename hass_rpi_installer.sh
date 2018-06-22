@@ -85,7 +85,7 @@ while getopts ":n" opt; do
 	sudo pip install packaging
 	sudo pip install appdirs
 	sudo pip install six
-	sudo pip install fabric
+	sudo pip install Fabric==1.14.0
     
     git clone https://github.com/ech0wav3/fabric-home-assistant.git
 
@@ -173,7 +173,7 @@ sudo pip install cryptography
 sudo pip install packaging
 sudo pip install appdirs
 sudo pip install six
-sudo pip install fabric
+sudo pip install Fabric==1.14.0
 
 git clone https://github.com/ech0wav3/fabric-home-assistant.git
 
